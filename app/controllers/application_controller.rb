@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   def hello_world
-    render inline: '<em>Hello, World!</em>'
+    render 'application/hello_world'
+    #render inline: File.read('app/views/application/hello_world.html')
   end
 end

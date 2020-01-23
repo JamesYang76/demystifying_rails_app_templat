@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   def hello_world
-    render 'application/hello_world'
-    #render inline: File.read('app/views/application/hello_world.html')
+    name = params['name'] || "World"
+    render 'application/hello_world', locals: { name: name }
   end
 end

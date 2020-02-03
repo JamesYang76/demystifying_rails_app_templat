@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get  '/edit_post/:id' => 'application#edit_post'
   post '/update_post/:id' => 'application#update_post'
   post '/delete_post/:id' => 'application#delete_post'
+  post '/create_comment_for_post/:post_id' => 'application#create_comment'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

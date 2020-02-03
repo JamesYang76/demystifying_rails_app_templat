@@ -7,8 +7,9 @@ class ApplicationController < ActionController::Base
 
   def show_post
     post = Post.find(params['id'])
+    comments = connection.execute('SELECT * FROM comments WHERE comments.post_id = ?', params['id'])
 
-    render 'application/show_post', locals: { post: post }
+    render 'application/show_post', locals: { post: post, comments: comments }
   end
 
   def new_post
@@ -49,5 +50,13 @@ class ApplicationController < ActionController::Base
     post.destroy
 
     redirect_to '/list_posts'
+  end
+
+  private
+
+  def connection
+    db_connection = SQLite3::Database.new 'db/development.sqlite3'
+    db_connection.results_as_hash = true
+    db_connection
   end
 end

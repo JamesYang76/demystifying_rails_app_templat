@@ -16,6 +16,7 @@
           <%= link_to 'Edit', edit_post_path(post.id) %>
 
           <form method="post" action="/posts/<%= post.id %>" style='display: inline'>
+            <input name= "_method" type="hidden" value="delete">
             <input type="submit" value="Delete" />
           </form>
 

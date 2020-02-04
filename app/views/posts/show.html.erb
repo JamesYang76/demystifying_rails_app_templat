@@ -40,17 +40,23 @@
         <% end%>
       </div>
 
-      <%= form_tag post_comments_path(@post.id) do %>
-        <%= label_tag 'Comment' %>
-        <%= text_area_tag 'comment[body]', @comment.body %>
-        <br /> <br />
+      <%= my_form_tag post_comments_path(@post.id) do %>
 
-        <%= label_tag 'Name' %>
-        <%= text_field_tag 'comment[author]', @comment.author %>
-        <br /> <br />
+        <% unless @comment.new_record? %>
+          <%= my_hidden_field_tag '_method', 'patch' %>
+        <% end %>
 
-        <%= submit_tag "Add Comment" %>
+        <%= my_label_tag 'Comment' %>
+        <%= my_text_area_tag 'comment[body]', @comment.body %>
+        <br /><br />
+
+        <%= my_label_tag 'Author' %>
+        <%= my_text_field_tag 'comment[author]', @comment.author %>
+        <br /><br />
+
+        <%= my_submit_tag %>
       <% end %>
+
       <hr />
 
     </div>

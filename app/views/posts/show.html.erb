@@ -42,11 +42,11 @@
 
       <%= form_tag post_comments_path(@post.id) do %>
         <%= label_tag 'Comment' %>
-        <%= text_area_tag 'body', @comment.body %>
+        <%= text_area_tag 'comment[body]', @comment.body %>
         <br /> <br />
 
         <%= label_tag 'Name' %>
-        <%= text_field_tag 'author', @comment.author %>
+        <%= text_field_tag 'comment[author]', @comment.author %>
         <br /> <br />
 
         <%= submit_tag "Add Comment" %>

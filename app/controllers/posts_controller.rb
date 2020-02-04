@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  before_action :find_post, only: [:show, :edit, :update, :destroy]
 
   # list_posts -> list -> index
   def index
@@ -7,7 +8,6 @@ class PostsController < ApplicationController
 
   # show_post -> show
   def show
-    @post    = Post.find(params['id'])
     @comment = Comment.new
   end
 
@@ -29,12 +29,10 @@ class PostsController < ApplicationController
 
   # edit_post -> edit
   def edit
-    @post = Post.find(params['id'])
   end
 
   # update_post -> update
   def update
-    @post = Post.find(params['id'])
     @post.set_attributes('author' => params['author'],
                          'title' => params['title'],
                          'body' => params['body'])
@@ -47,10 +45,13 @@ class PostsController < ApplicationController
 
   # delete_post -> delete -> destroy
   def destroy
-    post = Post.find(params['id'])
-    post.destroy
-
+    @post.destroy
     redirect_to posts_path
   end
 
+  private
+
+  def find_post
+    @post = Post.find(params[:id]) #used to be params['id']
+  end
 end

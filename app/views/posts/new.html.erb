@@ -9,7 +9,7 @@
     <% end%>
   </div>
 
-  <form method="post" action="/create_post">
+  <form method="post" action="/posts">
 
     <label for="title"> Title</label>
     <input id="title" name="title" type="text" value="<%= post.title %>"/>
@@ -28,7 +28,7 @@
   </form>
 
   <br />
-  <a href="/list_posts">Back to Posts</a>
+  <a href="/posts">Back to Posts</a>
 
   </body>
 </html>

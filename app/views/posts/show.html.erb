@@ -3,19 +3,19 @@
 
   <div class="post">
     <h2 class="title">
-      <%= post.title %>
+      <%= @post.title %>
     </h2>
     <small class="meta">
-      <span class="author">by <%= post.author %> -</span>
-      <em class="created_at"><%= post.created_at %></em>
+      <span class="author">by <%= @post.author %> -</span>
+      <em class="created_at"><%= @post.created_at %></em>
     </small>
 
-    <p class="body"><%= post.body %></p>
+    <p class="body"><%= @post.body %></p>
     <!-- display post -->
     <br /> <br />
     <div class="comments">
       <h3>Comments:</h3>
-      <% comments.each_with_index do |comment, index| %>
+      <% @comments.each_with_index do |comment, index| %>
         <p class="comment">
           <small class="comment_meta">
             <span class="comment_author">#<%= index %> by <%= comment.author %> -</span>

@@ -5,7 +5,7 @@
     <% @posts.each do |post| %>
       <div class="post">
         <h2 class="title">
-          <a href="/show_post/<%= post.id %>">
+          <a href="/posts/<%= post.id %>">
             <%= post.title %>
           </a>
         </h2>
@@ -25,7 +25,7 @@
     <% end %>
   </div>
 
-  <a href="/new_post">New Post</a>
+  <a href="/posts/new">New Post</a>
 
   </body>
 </html>

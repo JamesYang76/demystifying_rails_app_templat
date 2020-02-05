@@ -32,13 +32,7 @@
       <% end %>
 
       <!-- display errors -->
-      <div class="errors">
-        <% comment.errors.each do |attribute, error| %>
-          <p class="error" style="color: orange">
-            <%= attribute %>: <%= error %>
-          </p>
-        <% end%>
-      </div>
+      <%= render 'shared/errors', obj: @comment %>
 
       <%= my_form_tag post_comments_path(@post.id) do %>
 

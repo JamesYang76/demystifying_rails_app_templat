@@ -1,24 +1,7 @@
-<html>
-  <body>
-    <%= form_tag url_for(action: 'update'), method: "patch" do %>
+<%= render 'shared/errors', obj: @post %>
 
-      <%= label_tag 'Title' %>
-      <%= text_field_tag 'title', @post.title %>
-      <br /> <br />
-
-      <%= label_tag 'Body' %>
-      <%= text_area_tag 'body', @post.body %>
-      <br /> <br />
-
-      <%= label_tag 'Author' %>
-      <%= text_field_tag 'author', @post.author %>
-      <br /> <br />
-
-      <%= submit_tag 'Update Post' %>
-
-    <% end %>
-
-  <br />
-  <a href="/list_posts">Back to Posts</a>
-
-</body>
+<%= form_tag url_for(action: 'update'), method: "patch" do %>
+  <%= render "form_fields" %>
+<% end %>
+<br />
+<%= my_link_to 'Back to Post', posts_path %>

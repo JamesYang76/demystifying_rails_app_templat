@@ -25,31 +25,42 @@
         <p class="comment_body"><%= comment.body %></p>
         </p>
 
-        <%= form_tag post_comment_path(@post.id, comment.id), method: "delete" do %>
+        <%= form_for [@post, comment], method: "delete" do %>
           <%= submit_tag "Delete Comment" %>
         <% end %>
+
         <hr />
       <% end %>
 
       <!-- display errors -->
       <%= render 'shared/errors', obj: @comment %>
 
-      <%= my_form_tag post_comments_path(@post.id) do %>
-
-        <% unless @comment.new_record? %>
-          <%= my_hidden_field_tag '_method', 'patch' %>
-        <% end %>
-
-        <%= my_label_tag 'Comment' %>
-        <%= my_text_area_tag 'comment[body]', @comment.body %>
+      <%= form_for [@post, @comment] do |f| %>
+        <%= f.label 'Comment' %>
+        <%= f.text_area :body %>
         <br /><br />
-
-        <%= my_label_tag 'Author' %>
-        <%= my_text_field_tag 'comment[author]', @comment.author %>
+        <%= f.label :author %>
+        <%= f.text_field :author %>
         <br /><br />
-
-        <%= my_submit_tag %>
+        <%= f.submit %>
       <% end %>
+
+<!--      <%#= my_form_tag post_comments_path(@post.id) do %>
+
+        <%# unless @comment.new_record? %>
+          <%#= my_hidden_field_tag '_method', 'patch' %>
+        <%# end %>
+
+        <%#= my_label_tag 'Comment' %>
+        <%#= my_text_area_tag 'comment[body]', @comment.body %>
+        <br /><br />
+
+        <%#= my_label_tag 'Author' %>
+        <%#= my_text_field_tag 'comment[author]', @comment.author %>
+        <br /><br />
+
+        <%#= my_submit_tag %>
+      <%# end %>-->
 
       <hr />
 

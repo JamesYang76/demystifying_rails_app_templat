@@ -1,3 +1,8 @@
+class Post < ActiveRecord::Base
+  validates_presence_of :title, :body, :author
+end
+
+=begin
 class Post < BaseModel
   attr_reader :id, :title, :body, :author, :created_at
 
@@ -71,5 +76,6 @@ class Post < BaseModel
   def delete_comment(comment_id)
     Comment.find(comment_id).destroy
   end
-
 end
+=end
+

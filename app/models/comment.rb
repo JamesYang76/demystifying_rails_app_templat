@@ -1,3 +1,7 @@
+class Comment < ActiveRecord::Base
+  validates_presence_of :body, :author
+end
+=begin
 class Comment < BaseModel
   attr_reader :id, :body, :author, :post_id, :created_at
 
@@ -43,3 +47,5 @@ class Comment < BaseModel
     Post.find(post_id) # This can be accomplished using an existing method
   end
 end
+
+=end

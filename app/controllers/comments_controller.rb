@@ -8,7 +8,7 @@ class CommentsController < ApplicationController
 
   # def create_comment -> create
   def create
-    @comment = @post.build_comment(params[:comment])
+    @comment = @post.comments.build(params[:comment])
 
     if @comment.save
       flash[:success] = "You have successfully created the comment."
@@ -21,7 +21,7 @@ class CommentsController < ApplicationController
 
   # def delete_comment -> delete -> destroy
   def destroy
-    @post.delete_comment(params[:id])
+    @post.comments.delete(params[:id])
 
     redirect_to post_path(@post.id)
   end

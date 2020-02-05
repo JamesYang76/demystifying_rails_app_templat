@@ -8,7 +8,7 @@ class CommentsController < ApplicationController
 
   # def create_comment -> create
   def create
-    @comment = @post.comments.build(params[:comment])
+    @comment = @post.comments.build(comment_params)
 
     if @comment.save
       flash[:success] = "You have successfully created the comment."
@@ -30,5 +30,9 @@ class CommentsController < ApplicationController
 
   def find_post
     @post = Post.find(params['post_id'])
+  end
+
+  def comment_params
+    params.require(:comment).permit(:body, :author)
   end
 end
